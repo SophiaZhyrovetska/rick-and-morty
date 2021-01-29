@@ -1,0 +1,84 @@
+.DetailedUser {
+  &__content {
+    display: flex;
+    margin: 0 0 0 15%;
+  }
+
+  &__title {
+    font-size: 58px;
+    margin: 0;
+  }
+
+  &__links {
+    display: flex;
+    margin: 58px 0 54px 15%;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  &__link {
+    color: #3f8bfd;
+    text-decoration: none;
+    &--active {
+      color: #0a0a28;
+    }
+  }
+
+  &__separator {
+    margin: 0 8px;
+  }
+
+  &__image {
+    margin-right: calc(12% - 110px);
+    :first-child {
+      width: 330px;
+      height: 330px;
+      border-radius: 12px;
+    }
+  }
+
+  &__tags {
+    display: flex;
+    align-items: center;
+    margin: 20px 0 17px 0;
+  }
+
+  &__tag {
+    margin-right: 8px;
+    color: var(--text-dark);
+    background-color: var(--background-light);
+  }
+
+  &__info {
+    float: left;
+    margin-right: 117px;
+  }
+
+  &__episodes {
+    float: left;
+  }
+
+  &__textSection {
+    :first-child {
+      font-size: 15px;
+      margin: 16px 0 0;
+    }
+
+    :last-child {
+      margin: 3px 0 0;
+      font-size: 17px;
+    }
+  }
+
+  &__infoLabel {
+    font-weight: bold;
+    font-size: 15px;
+    color: var(--text-light);
+    margin: 16px 0 0;
+  }
+
+  &__infoValue {
+    margin: 3px 0 0;
+    font-size: 17px;
+  }
+}

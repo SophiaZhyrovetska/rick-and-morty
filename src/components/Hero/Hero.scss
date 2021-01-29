@@ -1,0 +1,17 @@
+.Hero {
+  font-size: 56px;
+  font-color: var(--text-dark);
+  font-weight: 700;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__logo {
+    width: 438px;
+    height: 129px;
+    margin: 0 48px;
+  }
+}

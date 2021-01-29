@@ -1,0 +1,56 @@
+.Select {
+  position: relative;
+  padding: 17px 24px;
+  background: #f3f7fd;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 700;
+  width: 212px;
+  &:first-child {
+    margin-right: 40px;
+  }
+
+  &__selectedOption {
+    position: relative;
+    text-align: left;
+    &::after {
+      display: block;
+      height: 8px;
+      width: 12px;
+      position: absolute;
+      right: 0;
+      top: calc(50% - 3px);
+      content: "";
+      background: url("../../assets/icons/Vector.svg");
+    }
+  }
+
+  &__label {
+    color: var(--cta);
+  }
+
+  &__value {
+    color: var(--text-dark);
+    margin-left: 8px;
+  }
+
+  &__options {
+    position: absolute;
+    top: 100%;
+    left: -24px;
+    width: 100%;
+    padding: 17px 24px;
+    background: var(--cta-light);
+    margin: 0;
+  }
+
+  &__option {
+    height: 50px;
+    line-height: 50px;
+    padding: 0 8px;
+    list-style-type: none;
+    &:hover {
+      background: var(--cta);
+    }
+  }
+}

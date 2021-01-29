@@ -1,0 +1,11 @@
+.CardsList {
+  display: flex;
+  justify-content: center;
+  width: 1250px;
+  margin: auto;
+  flex-wrap: wrap;
+
+  &__card {
+    margin: 80px 29px 0 0;
+  }
+}

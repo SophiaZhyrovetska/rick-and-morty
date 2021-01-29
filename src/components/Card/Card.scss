@@ -1,0 +1,36 @@
+.Card {
+  width: 282px;
+  height: 502px;
+  border-radius: 12px;
+  background-color: var(--background-dark);
+
+  &__content {
+    text-align: left;
+    padding: 24px 16px;
+  }
+
+  &__name {
+    text-decoration: none;
+
+    :first-child {
+      color: var(--text-lighter);
+      font-size: 24px;
+      margin: 0 0 8px 0;
+    }
+  }
+
+  &__tags {
+    display: flex;
+    align-items: center;
+    margin-bottom: 29px;
+  }
+
+  &__tag {
+    margin-right: 8px;
+  }
+
+  &__image {
+    width: 100%;
+    border-radius: 12px 12px 0 0;
+  }
+}
