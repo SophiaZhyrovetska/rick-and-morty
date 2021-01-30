@@ -25,16 +25,15 @@ const Home = ({ characters }) => {
   const [status, setStatus] = useState("");
 
   const filterCharacters = () => {
-    let filteredCharacters = [...characters];
-
-    if (gender.length !== 0) filteredCharacters = characters.filter((character) => character.gender === gender);
-    if (status.length !== 0) filteredCharacters = filteredCharacters.filter((character) => character.status === status);
-    if (characterName.length !== 0)
-      filteredCharacters = filteredCharacters.filter((character) =>
-        character.name.toLowerCase().includes(characterName.toLowerCase())
-      );
-
-    return filteredCharacters;
+    const checkGender = (character) =>
+      gender.length === 0 ? character : character.gender === gender;
+    const checkStatus = (character) =>
+      status.length === 0 ? character : character.status === status;
+    const checkName = (character) =>
+      characterName.length === 0
+        ? character
+        : character.name.toLowerCase().includes(characterName.toLowerCase());
+    return characters.filter(checkGender).filter(checkStatus).filter(checkName);
   };
 
   return (
@@ -44,8 +43,18 @@ const Home = ({ characters }) => {
         <Search setValue={setCharacterName} value={characterName} />
       </div>
       <div className="Home__filters">
-        <Select label="Status:" value={status} handleSelect={setStatus} options={statusOptions} />
-        <Select label="Gender:" value={gender} handleSelect={setGender} options={genderOptions} />
+        <Select
+          label="Status:"
+          value={status}
+          handleSelect={setStatus}
+          options={statusOptions}
+        />
+        <Select
+          label="Gender:"
+          value={gender}
+          handleSelect={setGender}
+          options={genderOptions}
+        />
       </div>
       <div className="Home__resultContainer">
         <CardsList characters={filterCharacters(characters)} />
