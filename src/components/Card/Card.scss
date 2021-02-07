@@ -16,17 +16,31 @@
       color: var(--text-lighter);
       font-size: 24px;
       margin: 0 0 8px 0;
+      width: 265px;
+      max-height: 58px;
+      overflow-y: scroll;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
   }
 
   &__tags {
     display: flex;
     align-items: center;
-    margin-bottom: 29px;
+    margin-bottom: 10px;
   }
 
   &__tag {
     margin-right: 8px;
+  }
+
+  &__imageHolder {
+    width: 282px;
+    height: 282px;
   }
 
   &__image {

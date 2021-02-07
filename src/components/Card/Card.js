@@ -1,8 +1,8 @@
 import { PropTypes } from "prop-types";
-import Tag from "../Tag";
 import { Link } from "react-router-dom";
-import TextSection from "../TextSection";
 import { Gender, Status } from "../../enums";
+import Tag from "../Tag";
+import TextSection from "../TextSection";
 
 import "./Card.scss";
 
@@ -10,15 +10,10 @@ const Card = ({
   id,
   name,
   status,
-  species,
-  type,
   gender,
   origin,
   location,
   image,
-  episode,
-  url,
-  created,
   className,
 }) => {
   return (
@@ -43,8 +38,18 @@ const Card = ({
             {gender}
           </Tag>
         </div>
-        <TextSection label={"Last known location:"} value={location.name} />
-        <TextSection label={"First seen in:"} value={origin.name} />
+        <TextSection
+          className="TextSection DetailedUser__textSection"
+          label={"Last known location: "}
+        >
+          {[location.name]}
+        </TextSection>
+        <TextSection
+          className="TextSection DetailedUser__textSection"
+          label={"First seen in: "}
+        >
+          {[origin.name]}
+        </TextSection>
       </div>
     </div>
   );
@@ -54,8 +59,6 @@ Card.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   status: PropTypes.string.isRequired,
-  species: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
   gender: PropTypes.string.isRequired,
   location: PropTypes.shape({
     url: PropTypes.string.isRequired,
@@ -66,9 +69,7 @@ Card.propTypes = {
     name: PropTypes.string.isRequired,
   }),
   image: PropTypes.string.isRequired,
-  episode: PropTypes.array.isRequired,
-  url: PropTypes.string.isRequired,
-  created: PropTypes.string.isRequired,
+  className: PropTypes.string,
 };
 
 export default Card;

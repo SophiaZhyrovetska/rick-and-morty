@@ -1,4 +1,4 @@
-.DetailedUser {
+.DetailedEpisode {
   height: calc(100% - 120px);
   background-color: var(--background-darker);
   display: flex;
@@ -23,7 +23,7 @@
 
   &__title {
     font-size: 58px;
-    margin: 0;
+    margin: 0 0 40px;
     color: var(--text-lighter);
   }
 
@@ -49,12 +49,19 @@
     color: var(--text-light);
   }
 
-  &__image {
+  &__number {
     margin-right: calc(14% - 110px);
+    width: 330px;
+    height: 330px;
+    border-radius: 12px;
+    background-color: var(--image-container);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-lighter);
+
     :first-child {
-      width: 330px;
-      height: 330px;
-      border-radius: 12px;
+      font-size: 52px;
     }
   }
 
@@ -64,18 +71,12 @@
     margin: 20px 0 17px 0;
   }
 
-  &__tag {
-    margin-right: 8px;
-    color: var(--text-dark);
-    background-color: var(--background-light);
-  }
-
   &__info {
     float: left;
     margin-right: 20%;
   }
 
-  &__episodes {
+  &__characters {
     float: left;
   }
 

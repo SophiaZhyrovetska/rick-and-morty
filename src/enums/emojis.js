@@ -1,7 +1,7 @@
 export const Status = Object.freeze({
   Alive: <span>&#128526;</span>,
   Dead: <span>&#128128;</span>,
-  Unknown: <span>&#129300;</span>,
+  unknown: <span>&#129300;</span>,
 });
 
 export const Gender = Object.freeze({

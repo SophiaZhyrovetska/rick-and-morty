@@ -1,0 +1,37 @@
+{
+  "root": true,
+
+  // "parser": "babel-eslint",
+
+  "extends": [
+    "eslint:recommended",
+
+    "plugin:react/recommended",
+
+    "plugin:import/warnings"
+  ],
+
+  "plugins": ["react", "import"],
+
+  "parserOptions": {
+    "ecmaVersion": 2017,
+
+    "sourceType": "module",
+
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+
+  "rules": {
+    "import/no-unresolved": 1,
+    "import/order": [
+      "error",
+      { "groups": ["builtin", "external", "parent", "sibling", "index"] }
+    ],
+    "import/imports-first": 1,
+    "no-unused-expressions": 1,
+    "no-console": 1,
+    "react/react-in-jsx-scope": "off"
+  }
+}

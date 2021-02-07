@@ -1,10 +1,10 @@
+import { useState, useCallback } from "react";
+import { PropTypes } from "prop-types";
+import _ from "lodash";
 import Select from "../../components/Select";
 import Search from "../../components/Search";
-import { useState } from "react";
 import Hero from "../../components/Hero";
 import CardsList from "../../components/CardsList";
-import Pagination from "../../components/Pagination";
-import { PropTypes } from "prop-types";
 import "./Home.scss";
 
 const statusOptions = [
@@ -19,28 +19,26 @@ const genderOptions = [
   { value: "Female", label: "Female" },
 ];
 
-const Home = ({ characters }) => {
-  const [characterName, setCharacterName] = useState("");
+const Home = () => {
+  const [name, setName] = useState("");
+  const [queryName, setQueryName] = useState("");
   const [gender, setGender] = useState("");
   const [status, setStatus] = useState("");
 
-  const filterCharacters = () => {
-    const checkGender = (character) =>
-      gender.length === 0 ? character : character.gender === gender;
-    const checkStatus = (character) =>
-      status.length === 0 ? character : character.status === status;
-    const checkName = (character) =>
-      characterName.length === 0
-        ? character
-        : character.name.toLowerCase().includes(characterName.toLowerCase());
-    return characters.filter(checkGender).filter(checkStatus).filter(checkName);
+  const delayedQuery = useCallback(_.debounce(setQueryName, 500), [
+    setQueryName,
+  ]);
+
+  const onNameChange = (value) => {
+    setName(value);
+    delayedQuery(value);
   };
 
   return (
     <div className="Home">
       <Hero />
       <div className="Home__search">
-        <Search setValue={setCharacterName} value={characterName} />
+        <Search setValue={onNameChange} value={name} />
       </div>
       <div className="Home__filters">
         <Select
@@ -57,10 +55,7 @@ const Home = ({ characters }) => {
         />
       </div>
       <div className="Home__resultContainer">
-        <CardsList characters={filterCharacters(characters)} />
-      </div>
-      <div className="Home__pagination">
-        <Pagination />
+        <CardsList gender={gender} name={queryName} status={status} />
       </div>
     </div>
   );

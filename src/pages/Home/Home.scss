@@ -16,13 +16,6 @@
   &__resultContainer {
     margin-top: 64px;
     background-color: var(--background-darker);
-    min-height: 350px;
-  }
-
-  &__pagination {
-    background-color: var(--background-darker);
-    padding: 64px 0;
-    display: flex;
-    justify-content: center;
+    min-height: 500px;
   }
 }

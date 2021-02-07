@@ -11,8 +11,13 @@ const Select = ({ value, handleSelect, options, label }) => {
     handleSelect(option.value);
     setIsOpened(false);
   };
-  const renderOption = (option) => (
-    <li value={option.value} className="Select__option" onClick={() => onOptionClick(option)}>
+  const renderOption = (option, index) => (
+    <li
+      key={index}
+      value={option.value}
+      className="Select__option"
+      onClick={() => onOptionClick(option)}
+    >
       {option.label}
     </li>
   );
@@ -23,7 +28,9 @@ const Select = ({ value, handleSelect, options, label }) => {
       <div className="Select__selectedOption" onClick={handleIsOpened}>
         <span className="Select__label">{label}</span>
         <span className="Select__value">{selectedOption?.label}</span>
-        {isOpened && <ul className="Select__options">{options?.map(renderOption)}</ul>}
+        {isOpened && (
+          <ul className="Select__options">{options?.map(renderOption)}</ul>
+        )}
       </div>
     </div>
   );
