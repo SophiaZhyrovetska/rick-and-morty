@@ -1,6 +1,7 @@
 export const getCharacters = async (params) => {
   const searchParams = new URLSearchParams(params);
   const response = await fetch(
+      // TODO: you could leave SERVER_URL in consts.js, just use process.env.REACT_APP_API_URL as value there
     `${process.env.REACT_APP_API_URL}/character?${searchParams.toString()}`
   );
 

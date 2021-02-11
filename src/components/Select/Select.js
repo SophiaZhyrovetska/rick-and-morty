@@ -16,6 +16,7 @@ const Select = ({ value, handleSelect, options, label }) => {
       key={index}
       value={option.value}
       className="Select__option"
+      // todo: no arrow functions in render/return, use currying
       onClick={() => onOptionClick(option)}
     >
       {option.label}

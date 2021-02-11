@@ -1,3 +1,4 @@
+// Really good approach!
 export const Status = Object.freeze({
   Alive: <span>&#128526;</span>,
   Dead: <span>&#128128;</span>,
