@@ -17,4 +17,10 @@
     display: flex;
     justify-content: center;
   }
+
+  &__text {
+    color: var(--text-lighter);
+    font-size: 28px;
+    padding-top: 130px;
+  }
 }
