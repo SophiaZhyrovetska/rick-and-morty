@@ -4,6 +4,7 @@ import { ReactComponent as Logo } from "../../assets/icons/logo.svg";
 import "./Header.scss";
 
 function Header() {
+  // todo: move to consts.js or outside of the component
   const quotes = [
     "Listen Morty, I hate to break it to you, but what people call “love” is just a chemical reaction that compels animals to breed.",
     "I'm a scientist; because I invent, transform, create, and destroy for a living, and when I don't like something about the world, I change it.",
