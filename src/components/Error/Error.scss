@@ -1,0 +1,12 @@
+.Error {
+  background-color: var(--background-darker);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - 170px);
+  padding-top: 50px;
+  &__text {
+    color: var(--text-lighter);
+    font-size: 28px;
+  }
+}

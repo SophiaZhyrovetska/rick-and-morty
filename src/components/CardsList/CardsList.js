@@ -3,13 +3,13 @@ import { PropTypes } from "prop-types";
 import { getCharacters } from "../../api";
 import Card from "../../components/Card";
 import Pagination from "../Pagination";
+import Error from "../Error";
 import "./CardsList.scss";
 
 const CardsList = ({ status, gender, name }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [characters, setCharacters] = useState();
   const [pages, setPages] = useState(0);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     loadCharacters(currentPage, {
@@ -27,10 +27,8 @@ const CardsList = ({ status, gender, name }) => {
     const items = await getCharacters({ page: page + 1, ...params });
     if (items.error) {
       setCharacters([]);
-      setError("No characters found");
       setPages(1);
     } else {
-      setError("");
       setCharacters(items?.results);
       setPages(items?.info?.pages || 0);
     }
@@ -40,10 +38,9 @@ const CardsList = ({ status, gender, name }) => {
     <Card className="CardsList__card" key={character.id} {...character} />
   );
 
-  return (
+  return characters && characters.length !== 0 ? (
     <div className="CardsList">
       <div className="CardsList__cardsContainer">
-        <p className="CardsList__text">{error}</p>
         {characters?.map(renderCharacter)}
       </div>
       <Pagination
@@ -53,6 +50,8 @@ const CardsList = ({ status, gender, name }) => {
         currentPage={currentPage}
       />{" "}
     </div>
+  ) : (
+    <Error errorText={"No characters found"} />
   );
 };
 

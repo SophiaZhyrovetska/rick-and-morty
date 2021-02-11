@@ -4,6 +4,7 @@ import { getCharacter, getEpisodes } from "../../api";
 import { Gender, Status } from "../../enums";
 import Tag from "../../components/Tag";
 import TextSection from "../../components/TextSection";
+import Error from "../../components/Error";
 import "./DetailedUser.scss";
 
 const DetailedUser = () => {
@@ -18,11 +19,13 @@ const DetailedUser = () => {
 
   const loadCharacter = async (id) => {
     const item = await getCharacter(id);
-    setCharacter(item);
-    const episodesIds = item.episode?.map((episode) =>
-      Number(episode.substring(episode.lastIndexOf("/") + 1))
-    );
-    loadEpisodes(episodesIds);
+    if (!item.error) {
+      setCharacter(item);
+      const episodesIds = item.episode?.map((episode) =>
+          Number(episode.substring(episode.lastIndexOf("/") + 1))
+      );
+      loadEpisodes(episodesIds);
+    }
   };
 
   const loadEpisodes = async (episodesIds) => {
@@ -141,7 +144,7 @@ const DetailedUser = () => {
       </div>
     </div>
   ) : (
-    <div>No character</div>
+    <Error errorText={"No such character :("} />
   );
 };
 

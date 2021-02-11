@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, NavLink, useParams } from "react-router-dom";
 import { getCharactersByIds, getEpisode } from "../../api";
 import TextSection from "../../components/TextSection";
+import Error from "../../components/Error";
 import "./DetailedEpisode.scss";
 
 const DetailedEpisode = () => {
@@ -16,11 +17,13 @@ const DetailedEpisode = () => {
 
   const loadEpisode = async (id) => {
     const item = await getEpisode(id);
-    setSelectedEpisode(item);
-    const charactersIds = item.characters?.map((character) =>
-      Number(character.substring(character.lastIndexOf("/") + 1))
-    );
-    loadCharacters(charactersIds);
+    if (!item.error) {
+      setSelectedEpisode(item);
+      const charactersIds = item.characters?.map((character) =>
+        Number(character.substring(character.lastIndexOf("/") + 1))
+      );
+      loadCharacters(charactersIds);
+    }
   };
 
   const loadCharacters = async (charactersIds) => {
@@ -94,7 +97,7 @@ const DetailedEpisode = () => {
       </div>
     </div>
   ) : (
-    <div>No character</div>
+    <Error errorText={"No such episode :("} />
   );
 };
 
